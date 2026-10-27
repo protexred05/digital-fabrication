@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --theme-color: #00ff66;
+    --theme-dim: #00aa44;
+    --theme-dark: #003311;
+    --theme-glow: rgba(0, 255, 102, 0.4);
+    --theme-bg: #030a05;
+    --theme-card: #06150a;
+    --theme-border: rgba(0, 255, 102, 0.3);
+  }
+
+  [data-theme="amber"] {
+    --theme-color: #ffb000;
+    --theme-dim: #b87c00;
+    --theme-dark: #3a2500;
+    --theme-glow: rgba(255, 176, 0, 0.4);
+    --theme-bg: #0c0801;
+    --theme-card: #171103;
+    --theme-border: rgba(255, 176, 0, 0.3);
+  }
+
+  [data-theme="cyan"] {
+    --theme-color: #00f3ff;
+    --theme-dim: #009cb0;
+    --theme-dark: #002c38;
+    --theme-glow: rgba(0, 243, 255, 0.4);
+    --theme-bg: #010a0e;
+    --theme-card: #04141c;
+    --theme-border: rgba(0, 243, 255, 0.3);
+  }
+
+  [data-theme="mono"] {
+    --theme-color: #f1f5f9;
+    --theme-dim: #94a3b8;
+    --theme-dark: #1e293b;
+    --theme-glow: rgba(241, 245, 249, 0.25);
+    --theme-bg: #05070a;
+    --theme-card: #0f172a;
+    --theme-border: rgba(148, 163, 184, 0.3);
+  }
+
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-color);
+    font-family: 'Share Tech Mono', 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+/* CRT Scanlines and overlay */
+.scanlines-overlay::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  z-index: 50;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.crt-glow {
+  text-shadow: 0 0 5px var(--theme-glow);
+}
+
+.box-glow {
+  box-shadow: 0 0 15px -3px var(--theme-glow);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.6);
+  border-left: 1px solid var(--theme-border);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-dim);
+  border: 1px solid var(--theme-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-color);
+}
+
+@keyframes blink-cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-cursor {
+  animation: blink-cursor 1s infinite;
+}

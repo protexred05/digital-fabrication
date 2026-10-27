@@ -1,0 +1,6 @@
+{
+  "name": "Terminal Protocols Hub",
+  "description": "Cyberpunk hacker terminal hub to launch and play Astro Oracle and War Medic triage simulation games.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
